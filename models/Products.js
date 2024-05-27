@@ -2,6 +2,8 @@ export default class Products {
   constructor(element, data) {
     this.element = element;
     this.data = data;
+    this.element.addEventListener("click", this);
+    this.productId = ""
   }
 
   showProducts() {
@@ -24,15 +26,26 @@ export default class Products {
   }
 
   createInfo(data) {
-    const { name, price } = data;
+    const { name, price, id } = data;
     const infoJSX = `
-    <div>
+    <div id="product-info">
         <h3>${name}</h3>
         <div>
             <span>${price}</span>
-            <button>+</button>
+            <button data-id=${id}>+</button>
         </div>
     </div>`;
     return infoJSX;
+  }
+
+  handleEvent() {
+    if (event.target.tagName === "BUTTON") {
+      this.addToCart(event.target.dataset.id);
+    }
+  }
+
+  addToCart(id) {
+    this.productId = id;
+    console.log(this.productId);
   }
 }
