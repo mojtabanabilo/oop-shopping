@@ -1,9 +1,10 @@
 export default class Products {
-  constructor(element, data) {
+  constructor(element, data, cart) {
     this.element = element;
     this.data = data;
     this.element.addEventListener("click", this);
-    this.productId = ""
+    this.productId = "";
+    this.cart = cart.product;
   }
 
   showProducts() {
@@ -45,7 +46,7 @@ export default class Products {
   }
 
   addToCart(id) {
-    this.productId = id;
-    console.log(this.productId);
+    const currentProduct = this.data.find(item => item.id === +id);
+    this.cart.push(currentProduct);
   }
 }
