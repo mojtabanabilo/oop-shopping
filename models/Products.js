@@ -4,7 +4,7 @@ export default class Products {
     this.data = data;
     this.element.addEventListener("click", this);
     this.productId = "";
-    this.cart = cart.product;
+    this.cart = cart;
   }
 
   showProducts() {
@@ -42,11 +42,12 @@ export default class Products {
   handleEvent() {
     if (event.target.tagName === "BUTTON") {
       this.addToCart(event.target.dataset.id);
+      this.cart.showProducts();
     }
   }
 
   addToCart(id) {
     const currentProduct = this.data.find(item => item.id === +id);
-    this.cart.push(currentProduct);
+    this.cart.product.push(currentProduct);
   }
 }
