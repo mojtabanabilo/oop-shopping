@@ -37,9 +37,9 @@ export default class Cart {
     const { name, price } = data;
 
     const infoJSX = `
-      <div>
+      <div id="cart-info">
         <h4>${name}</h4>
-        <p>${price}</p>
+        <p>$ ${price}</p>
       </div>
     `;
 
@@ -50,13 +50,13 @@ export default class Cart {
     const { id } = data;
 
     const controlsJSX = `
-      <div>
+      <div id="cart-control">
         <div>
-          <button>-</button>
+          <button data-id=${id}>-</button>
           <span>${qty}</span>
-          <button>+</button>
+          <button data-id=${id}>+</button>
         </div>
-        <button>Remove</button>
+        <button data-id=${id}>Remove</button>
       </div>
     `;
 
